@@ -1,0 +1,47 @@
+<%= form_for @document do |f| %>
+    <% if @document.errors.any? %>
+        <div id="errorExplanation">
+            <p>Hay <%= pluralize(@document.errors.count, "error") %> por eso no fue guardado</p>
+            <ul>
+                <% @document.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <div class="form-group">
+        <%= f.label :code, "Codigo" %>
+        <%= f.text_field :code, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :doc_code, "Nro. Documento" %>
+        <%= f.text_field :doc_code, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :supplier, "Proveedor" %>
+        <%= f.select :supplier_id, Supplier.all.collect {|s| [s.name, s.id]}, { :include_blank => "Seleccione" }, { :class => "form-control" } %>
+    </div>
+    <div class="form-group">
+        <%= f.label :user, "Usuario" %>
+        <%= f.select :user_id, User.all.collect {|u| [u.name, u.id]}, { :include_blank => "Seleccione" }, { :class => "form-control" } %>
+    </div>
+    <div class="form-group">
+        <%= f.label :date_emission, "Fecha de Emisión" %>
+        <%= f.date_field :date_emission, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :date_due, "Fecha de Expiración" %>
+        <%= f.date_field :date_due, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :total_amount, "Monto Total" %>
+        <%= f.number_field :total_amount, step: :any, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :state, "Estado" %>
+        <%= f.text_field :state, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= f.submit "Guardar", :class => "btn btn-primary" %>
+    </div>
+<% end %>

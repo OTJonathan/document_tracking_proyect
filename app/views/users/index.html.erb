@@ -1,0 +1,31 @@
+<h1>Lista de Usuarios</h1>
+<table class="table">
+  <colgroup>
+    <col width="50%"/>
+    <col width="50%"/>
+    <col/>
+    <col/>
+    <col/>
+  </colgroup>
+  <thead class="thead-dark">
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |u| %>
+    <tr>
+      <td><%= u.name %></td>
+      <td><%= u.email %></td>
+      <td><%= link_to 'Show', :action => :show, :id => u.id %></td>
+      <td><%= link_to 'Edit', :action => :edit, :id => u.id %></td>
+      <td><%= link_to 'Destroy', { :action => :destroy, :id => u.id }, :method => :delete, :data => { :confirm => 'Estas Seguro?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "Crear", :action => :new %>

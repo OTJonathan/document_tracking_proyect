@@ -1,0 +1,34 @@
+<h1>Lista de Proveedores</h1>
+<table class="table">
+  <colgroup>
+    <col width="30%"/>
+    <col width="30%"/>
+    <col width="40%"/>
+    <col/>
+    <col/>
+    <col/>
+  </colgroup>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">DOC</th>
+      <th scope="col">Email</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @suppliers.each do |s| %>
+    <tr>
+      <td><%= s.name %></td>
+      <td><%= s.doc_ident %></td>
+      <td><%= s.email %></td>
+      <td><%= link_to 'Show', :action => :show, :id => s.id %></td>
+      <td><%= link_to 'Edit', :action => :edit, :id => s.id %></td>
+      <td><%= link_to 'Destroy', { :action => :destroy, :id => s.id }, :method => :delete, :data => { :confirm => 'Estas Seguro?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "Crear", :action => :new %>

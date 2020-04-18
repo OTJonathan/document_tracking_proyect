@@ -1,0 +1,11 @@
+<h2>Usuario</h2>
+<p>
+    <strong>Nombre:</strong>
+    <%= @user.name%>
+</p>
+<p>
+    <strong>Email:</strong>
+    <%= @user.email%>
+</p>
+<%= link_to 'Volver', :action => :index %> | 
+<%= link_to 'Editar', :action => :edit, :id => @user.id %>

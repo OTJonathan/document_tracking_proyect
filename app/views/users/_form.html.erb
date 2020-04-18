@@ -1,0 +1,27 @@
+<%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+        <div id="errorExplanation">
+            <p>Hay <%= pluralize(@user.errors.count, "error") %> por eso no fue guardado</p>
+            <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <div class="form-group">
+        <%= f.label :name, "Nombre" %>
+        <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :password, "Contraseña" %>
+        <%= f.password_field :password, { placeholder: "********", class: "form-control" } %>
+    </div>
+    <div class="form-group">
+        <%= f.submit "Guardar", :class => "btn btn-primary" %>
+    </div>
+<% end %>

@@ -1,0 +1,35 @@
+<h2>Documento</h2>
+<p>
+    <strong>Código:</strong>
+    <%= @document.code%>
+</p>
+<p>
+    <strong>Nro. Documento:</strong>
+    <%= @document.doc_code%>
+</p>
+<p>
+    <strong>Proveedor:</strong>
+    <%= Supplier.find(@document.supplier_id).name%>
+</p>
+<p>
+    <strong>Usuario:</strong>
+    <%= User.find(@document.user_id).name%>
+</p>
+<p>
+    <strong>Fecha de Emisión:</strong>
+    <%= @document.date_emission%>
+</p>
+<p>
+    <strong>Fecha de Expiración:</strong>
+    <%= @document.date_due%>
+</p>
+<p>
+    <strong>Monto Total:</strong>
+    <%= @document.total_amount%>
+</p>
+<p>
+    <strong>Estado:</strong>
+    <%= @document.state%>
+</p>
+<%= link_to 'Volver', :action => :index %> | 
+<%= link_to 'Editar', :action => :edit, :id => @document.id %>

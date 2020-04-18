@@ -1,0 +1,23 @@
+<h2>Usuario</h2>
+<p>
+    <strong>Nombre:</strong>
+    <%= @supplier.name%>
+</p>
+<p>
+    <strong>Doc. Identidad:</strong>
+    <%= @supplier.doc_ident%>
+</p>
+<p>
+    <strong>Dirección:</strong>
+    <%= @supplier.street%>
+</p>
+<p>
+    <strong>Email:</strong>
+    <%= @supplier.email%>
+</p>
+<p>
+    <strong>Celular:</strong>
+    <%= @supplier.mobile%>
+</p>
+<%= link_to 'Volver', :action => :index %> | 
+<%= link_to 'Editar', :action => :edit, :id => @supplier.id %>
