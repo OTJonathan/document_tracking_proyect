@@ -9,7 +9,7 @@ class SuppliersController < ApplicationController
 
     def show
         @supplier = Supplier.find(params[:id])
-        @documents = Document.find_by(supplier_id: params[:id])
+        @documents = Document.where(supplier_id: params[:id])
     end
 
     def create
