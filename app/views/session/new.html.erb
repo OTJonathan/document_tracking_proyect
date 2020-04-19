@@ -1,0 +1,34 @@
+<div class="content content-fixed content-auth">
+<div class="container">
+  <div class="media align-items-stretch justify-content-center ht-100p pos-relative">
+    <div class="media-body align-items-center d-none d-lg-flex">
+      <div class="mx-wd-600 mx-ht-100p">
+        <img src="packs/media/img/home/photo-1.jpg" class="img-fluid" alt="">
+      </div>
+    </div><!-- media-body -->
+    <div class="sign-wrapper mg-lg-l-50 mg-xl-l-60">
+      <div class="wd-100p">
+        <h3 class="tx-color-01 mg-b-5">Iniciar Sesión</h3>
+        <p class="tx-color-03 tx-16 mg-b-40">Bienvenido de vuelta! Por favor ingrese sus credenciales para continuar.</p>
+        <%= form_tag '/login' do %>
+        <div class="form-group">
+          <label>Usuario</label>
+          <%= text_field_tag :name, "", class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <div class="d-flex justify-content-between mg-b-5">
+            <label>Contaseña</label>
+            <a href="" class="tx-13">Recuperar Contraseña</a>
+          </div>
+          <%= password_field_tag :password, "", class: 'form-control'%>
+        </div>
+        <button class="btn btn-brand-02 btn-block">Ingresar</button>
+        <%end%>
+        <div class="tx-13 mg-t-20 tx-center">
+            ¿No tiene una cuenta? <%= link_to "Crear cuenta", '/users/new', method: :get%>
+        </div>
+      </div>
+    </div><!-- sign-wrapper -->
+  </div><!-- media -->
+</div><!-- container -->
+</div><!-- content -->

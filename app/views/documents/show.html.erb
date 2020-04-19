@@ -1,35 +1,61 @@
-<h2>Documento</h2>
-<p>
-    <strong>Código:</strong>
-    <%= @document.code%>
-</p>
-<p>
-    <strong>Nro. Documento:</strong>
-    <%= @document.doc_code%>
-</p>
-<p>
-    <strong>Proveedor:</strong>
-    <%= Supplier.find(@document.supplier_id).name%>
-</p>
-<p>
-    <strong>Usuario:</strong>
-    <%= User.find(@document.user_id).name%>
-</p>
-<p>
-    <strong>Fecha de Emisión:</strong>
-    <%= @document.date_emission%>
-</p>
-<p>
-    <strong>Fecha de Expiración:</strong>
-    <%= @document.date_due%>
-</p>
-<p>
-    <strong>Monto Total:</strong>
-    <%= @document.total_amount%>
-</p>
-<p>
-    <strong>Estado:</strong>
-    <%= @document.state%>
-</p>
-<%= link_to 'Volver', :action => :index %> | 
-<%= link_to 'Editar', :action => :edit, :id => @document.id %>
+<div class="content content-fixed">
+      <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-30">
+          <div>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                <li class="breadcrumb-item"><a href="#">Documentos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Detalle</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+        <div class="row row-xs">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header d-sm-flex justify-content-between bd-b-0 pd-t-20 pd-b-0">
+              </div>
+              <div class="card-body">
+              <h2>Documento: <%= @document.code%></h2>
+              <p>
+              <strong>Código:</strong>
+              <%= @document.code%>
+          </p>
+          <p>
+              <strong>Nro. Documento:</strong>
+              <%= @document.doc_code%>
+          </p>
+          <p>
+              <strong>Proveedor:</strong>
+              <%= Supplier.find(@document.supplier_id).name%>
+          </p>
+          <p>
+              <strong>Usuario:</strong>
+              <%= User.find(@document.user_id).name%>
+          </p>
+          <p>
+              <strong>Fecha de Emisión:</strong>
+              <%= @document.date_emission%>
+          </p>
+          <p>
+              <strong>Fecha de Expiración:</strong>
+              <%= @document.date_due%>
+          </p>
+          <p>
+              <strong>Monto Total:</strong>
+              <%= @document.total_amount%>
+          </p>
+          <p>
+              <strong>Estado:</strong>
+              <%= @document.state%>
+          </p>
+              </div><!-- card-body -->
+              <div class="card-footer pd-y-15 pd-x-20">
+              <%= link_to 'Volver', { :action => :index }, :class => "btn btn-primary" %> 
+              <%= link_to 'Editar', {:action => :edit, :id => @document.id }, :class => "btn btn-success" %>
+              </div><!-- card-footer -->
+            </div><!-- card -->
+          </div><!-- col -->
+        </div><!-- row -->
+      </div><!-- container -->
+    </div><!-- content -->

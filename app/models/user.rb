@@ -4,4 +4,5 @@ class User < ApplicationRecord
     validates :password, presence: { message: "no puede estar en blanco" }
 
     has_many :documents
+    has_secure_password
 end

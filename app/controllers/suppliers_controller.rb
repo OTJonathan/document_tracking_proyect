@@ -9,6 +9,7 @@ class SuppliersController < ApplicationController
 
     def show
         @supplier = Supplier.find(params[:id])
+        @documents = Document.find_by(supplier_id: params[:id])
     end
 
     def create
@@ -26,7 +27,7 @@ class SuppliersController < ApplicationController
 
     def update
         @supplier = Supplier.find(params[:id])
-        if @suppliers.update_attributes(supplier_params)
+        if @supplier.update_attributes(supplier_params)
             redirect_to :action => :show, :id => @supplier.id
         else
             render 'edit'

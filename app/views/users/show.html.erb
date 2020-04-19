@@ -1,11 +1,38 @@
-<h2>Usuario</h2>
-<p>
-    <strong>Nombre:</strong>
-    <%= @user.name%>
-</p>
-<p>
-    <strong>Email:</strong>
-    <%= @user.email%>
-</p>
-<%= link_to 'Volver', :action => :index %> | 
-<%= link_to 'Editar', :action => :edit, :id => @user.id %>
+
+
+<div class="content content-fixed">
+      <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-30">
+          <div>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                <li class="breadcrumb-item"><a href="#">Usuarios</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Inicio</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="d-none d-md-block">
+            <%= link_to '<i data-feather="plus" class="wd-10 mg-r-5"></i> Añadir Usuario'.html_safe, { :action => :new }, :class => "btn btn-sm pd-x-15 btn-primary btn-uppercase mg-l-5" %>
+          </div>
+        </div>
+        <div class="row row-xs">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header d-sm-flex justify-content-between bd-b-0 pd-t-20 pd-b-0">
+              </div>
+              <div class="card-body">
+              <h2>Usuario: <%= @user.name%></h2>
+              <p>
+                  <strong>Email:</strong>
+                  <%= @user.email%>
+              </p>
+              </div><!-- card-body -->
+              <div class="card-footer pd-y-15 pd-x-20">
+              <%= link_to 'Volver', { :action => :index }, :class => "btn btn-primary" %> 
+              <%= link_to 'Editar', {:action => :edit, :id => @user.id }, :class => "btn btn-success" %>
+              </div><!-- card-footer -->
+            </div><!-- card -->
+          </div><!-- col -->
+        </div><!-- row -->
+      </div><!-- container -->
+    </div><!-- content -->

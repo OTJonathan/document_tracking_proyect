@@ -1,3 +1,24 @@
-<h1>Nuevo Usuario</h1>
-<%= render 'form' %>
-<%= link_to "Volver", :action => :index %>
+<div class="content content-fixed content-auth">
+<div class="container">
+  <div class="media align-items-stretch justify-content-center ht-100p">
+    <div class="sign-wrapper mg-lg-r-50 mg-xl-r-60">
+      <div class="pd-t-20 wd-100p">
+        <h4 class="tx-color-01 mg-b-5">Crear nueva cuenta</h4>
+        <%= render 'form', user: @user %>
+        <% if !logged_in? %>
+        <div class="tx-13 mg-t-20 tx-center">Ya tienes una cuenta? <%= link_to 'Ingresar', '/login' %>
+        </div>
+        <% else %>
+        <div class="tx-13 mg-t-20 tx-center"><%= link_to 'Regresar', :back %>
+        </div>
+        <% end %>
+      </div>
+    </div><!-- sign-wrapper -->
+    <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 align-items-center d-none d-lg-flex pos-relative">
+      <div class="mx-wd-400 mx-ht-100p">
+        <img src="/packs/media/img/home/photo-2.jpg" class="img-fluid" alt="">
+      </div>
+    </div><!-- media-body -->
+  </div><!-- media -->
+</div><!-- container -->
+</div><!-- content -->

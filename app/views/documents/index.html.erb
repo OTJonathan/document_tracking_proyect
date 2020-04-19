@@ -1,37 +1,85 @@
-<h1>Lista de Documentos</h1>
-<table class="table">
-  <colgroup>
-    <col width="25%"/>
-    <col width="25%"/>
-    <col width="25%"/>
-    <col width="25%"/>
-    <col/>
-    <col/>
-    <col/>
+<div class="content content-fixed">
+      <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-30">
+          <div>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                <li class="breadcrumb-item"><a href="#">Documentos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Inicio</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="d-none d-md-block">
+            <%= link_to '<i data-feather="plus" class="wd-10 mg-r-5"></i> Añadir Documento'.html_safe, { :action => :new }, :class => "btn btn-sm pd-x-15 btn-primary btn-uppercase mg-l-5" %>
+          </div>
+        </div>
+        <div class="row row-xs">
+          <div class="col-lg-8">
+            <div class="card">
+              <div class="card-header d-sm-flex justify-content-between bd-b-0 pd-t-20 pd-b-0">
+              </div>
+              <div class="card-body">
+              <table id="example1" class="table table-striped table-sm">
+              <colgroup>
+    <col width="20%"/>
+    <col width="20%"/>
+    <col width="20%"/>
+    <col width="20%"/>
+    <col width="20%"/>
   </colgroup>
-  <thead class="thead-dark">
+  <thead>
     <tr>
       <th scope="col">Código</th>
       <th scope="col">Nro. Documento</th>
       <th scope="col">Monto Total</th>
       <th scope="col">Estado</th>
       <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @documents.each do |d| %>
     <tr>
-      <td><%= d.code %></td>
-      <td><%= d.doc_code %></td>
-      <td><%= d.total_amount %></td>
-      <td><%= d.state %></td>
-      <td><%= link_to 'Show', :action => :show, :id => d.id %></td>
-      <td><%= link_to 'Edit', :action => :edit, :id => d.id %></td>
-      <td><%= link_to 'Destroy', { :action => :destroy, :id => d.id }, :method => :delete, :data => { :confirm => 'Estas Seguro?' } %></td>
+      <td class="align-middle"><%= d.code %></td>
+      <td class="align-middle"><%= d.doc_code %></td>
+      <td class="align-middle"><%= d.total_amount %></td>
+      <td class="align-middle"><%= d.state %></td>
+      <td class="align-middle"><%= link_to '<i class="fas fa-eye"></i>'.html_safe, { :action => :show, :id => d.id }, :class=>"btn btn-xs btn-primary btn-icon" %>
+      <%= link_to '<i class="fas fa-pen"></i>'.html_safe, { :action => :edit, :id => d.id }, :class=>"btn btn-xs btn-success btn-icon" %>
+      <%= link_to '<i class="fas fa-trash"></i>'.html_safe, { :action => :destroy, :id => d.id }, :class=>"btn btn-xs btn-danger btn-icon", :method => :delete, :data => { :confirm => 'Estas Seguro?' } %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
-<%= link_to "Crear", :action => :new %>
+              </div><!-- card-body -->
+              <div class="card-footer pd-y-15 pd-x-20">
+              </div><!-- card-footer -->
+            </div><!-- card -->
+          </div><!-- col -->
+          <div class="col-lg-4 mg-t-10 mg-lg-t-0">
+                <div class="card">
+                  <div class="card-header d-flex align-items-center justify-content-between">
+                    <h6 class="mg-b-0">Indicadores</h6>
+                    <div class="d-flex tx-18">
+                    </div>
+                  </div>
+                  <ul class="list-group list-group-flush tx-13">
+                    <li class="list-group-item d-flex pd-sm-x-20">
+                      <div class="avatar d-none d-sm-block"><span class="avatar-initial rounded-circle bg-teal"><i class="icon ion-md-checkmark"></i></span></div>
+                      <div class="pd-sm-l-10">
+                        <p class="tx-medium mg-b-0">Nuevos documentos</p>
+                        <small class="tx-12 tx-color-03 mg-b-0"><%= DateTime.now.strftime("%m/%d/%Y")%></small>
+                      </div>
+                      <div class="mg-l-auto text-right">
+                        <p class="tx-medium mg-b-0"><%= @documents.count %></p>
+                        <small class="tx-12 tx-success mg-b-0">Existentes</small>
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="card-footer text-center tx-13">
+                    <a href="" class="link-03">Mostrar todos <i class="icon ion-md-arrow-down mg-l-5"></i></a>
+                  </div><!-- card-footer -->
+                </div><!-- card -->
+          </div><!-- col -->
+        </div><!-- row -->
+      </div><!-- container -->
+    </div><!-- content -->
