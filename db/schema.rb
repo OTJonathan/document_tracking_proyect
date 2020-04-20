@@ -10,19 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_162721) do
+ActiveRecord::Schema.define(version: 2020_04_20_025154) do
+
+  create_table "document_state_rels", force: :cascade do |t|
+    t.datetime "date"
+    t.string "name"
+    t.string "description"
+    t.string "obs"
+    t.integer "user_id", null: false
+    t.integer "document_id", null: false
+    t.integer "document_state_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["document_id"], name: "index_document_state_rels_on_document_id"
+    t.index ["document_state_id"], name: "index_document_state_rels_on_document_state_id"
+    t.index ["user_id"], name: "index_document_state_rels_on_user_id"
+  end
+
+  create_table "document_states", force: :cascade do |t|
+    t.string "name"
+    t.string "format"
+    t.string "icon"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "document_types", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "documents", force: :cascade do |t|
-    t.string "code"
+    t.integer "document_type_id", null: false
     t.string "doc_code"
     t.integer "supplier_id", null: false
     t.integer "user_id", null: false
     t.date "date_emission"
     t.date "date_due"
+    t.string "description"
     t.decimal "total_amount"
-    t.string "state"
+    t.string "obs"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["document_type_id"], name: "index_documents_on_document_type_id"
     t.index ["supplier_id"], name: "index_documents_on_supplier_id"
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
@@ -45,6 +77,10 @@ ActiveRecord::Schema.define(version: 2020_04_18_162721) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "document_state_rels", "document_states"
+  add_foreign_key "document_state_rels", "documents"
+  add_foreign_key "document_state_rels", "users"
+  add_foreign_key "documents", "document_types"
   add_foreign_key "documents", "suppliers"
   add_foreign_key "documents", "users"
 end

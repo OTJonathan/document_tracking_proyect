@@ -1,0 +1,27 @@
+  <%= form_for @document_type do |form| %>
+    <% if @document_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@document.errors.count, "error") %> no permite(n) que sea grabado:</h2>
+      <ul>
+        <%  @document.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :code, "Codigo" %>
+    <%= form.text_field :code, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :name, "Nombre" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Guardar", :class => "btn btn-primary" %>
+    <%= link_to "Volver", :back, :class => "btn btn-secondary" %>
+  </div>
+<% end %>

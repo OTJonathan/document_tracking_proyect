@@ -1,0 +1,61 @@
+<%= form_for @document_state_rel do |form| %>
+  <% if @document_state_rel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@document_state_rel.errors.count, "error") %> prohibited this document_state_rel from being saved:</h2>
+
+      <ul>
+        <% @document_state_rel.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-row">
+  <div class="form-group col-md-6">
+    <%= form.label :date, "Fecha" %>
+    <%= form.datetime_field :date, class: "form-control" %>
+  </div>
+
+  <div class="form-group col-md-6">
+    <%= form.label :name, "Nombre" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+  </div>
+
+  <div class="form-row">
+  <div class="form-group col-md-6">
+    <%= form.label :description, "Descripcion" %>
+    <%= form.text_field :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group col-md-6">
+    <%= form.label :user_id, "Usuario" %>
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+    <%= form.select :user_id, User.all.collect {|d| [d.name, d.id]}, { :include_blank => "Seleccione", :selected => current_user.id }, { :class => "form-control", :disabled => true } %>
+  </div>
+  </div>
+
+  <div class="form-row">
+  <div class="form-group col-md-6">
+    <%= form.label :document_id, "Documento" %>
+    <%= form.hidden_field :document_id, :value => @document.id %>
+    <%= form.select :document_id, Document.all.collect {|d| [d.doc_code, d.id]}, { :include_blank => "Seleccione", :selected => @document.id }, { :class => "form-control", :disabled => true } %>
+  </div>
+
+  <div class="form-group col-md-6">
+    <%= form.label :document_state_id, "Estado" %>
+    <%= form.select :document_state_id, DocumentState.all.collect {|d| [d.name, d.id]}, { :include_blank => "Seleccione", disabled:true }, { :class => "form-control" } %>
+  </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :obs, "Observaciones" %>
+    <%= form.text_area :obs, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+  <%= form.submit "Guardar", :class => "btn btn-primary" %>
+  <%= link_to "Volver", :back, :class => "btn btn-secondary" %>
+  </div>
+<% end %>

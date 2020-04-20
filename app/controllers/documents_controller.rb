@@ -9,6 +9,7 @@ class DocumentsController < ApplicationController
 
   def show
     @document = Document.find(params[:id])
+    @document_states = DocumentStateRel.where(document_id:params[:id])
   end
 
   def create
@@ -41,6 +42,6 @@ end
 
   private
   def document_params
-    params.require(:document).permit(:code, :doc_code, :supplier_id, :user_id, :date_emission, :date_due, :total_amount, :state)
+    params.require(:document).permit(:document_type_id, :doc_code, :supplier_id, :user_id, :date_emission, :date_due, :description, :total_amount, :obs)
   end
 end

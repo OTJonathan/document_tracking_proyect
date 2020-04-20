@@ -11,20 +11,12 @@
           </div>
         </div>
         <div class="row row-xs">
-          <div class="col-lg-12">
+          <div class="col-lg-8">
             <div class="card">
               <div class="card-header d-sm-flex justify-content-between bd-b-0 pd-t-20 pd-b-0">
               </div>
               <div class="card-body">
-              <h2>Documento: <%= @document.code%></h2>
-              <p>
-              <strong>Código:</strong>
-              <%= @document.code%>
-          </p>
-          <p>
-              <strong>Nro. Documento:</strong>
-              <%= @document.doc_code%>
-          </p>
+              <h2>Documento: <%= @document.document_type.code%> - <%= @document.doc_code%></h2>
           <p>
               <strong>Proveedor:</strong>
               <%= Supplier.find(@document.supplier_id).name%>
@@ -46,8 +38,12 @@
               <%= @document.total_amount%>
           </p>
           <p>
-              <strong>Estado:</strong>
-              <%= @document.state%>
+              <strong>Glosa:</strong>
+              <%= @document.description%>
+          </p>
+          <p>
+              <strong>Observaciones:</strong>
+              <%= @document.obs%>
           </p>
               </div><!-- card-body -->
               <div class="card-footer pd-y-15 pd-x-20">
@@ -56,6 +52,33 @@
               </div><!-- card-footer -->
             </div><!-- card -->
           </div><!-- col -->
+          <div class="col-lg-4">
+          <div class="card">
+                    <div class="card-header pd-b-0 pd-x-20 bd-b-0">
+                      <div class="d-sm-flex align-items-center justify-content-between">
+                        <h6 class="mg-b-0">Seguimiento</h6>
+                        <div class="d-flex tx-18">
+                          <%= link_to '<i class="fas fa-plus"></i>'.html_safe , { :controller => :document_state_rels, :action => :new, document_id: @document.id }, :class => "link-03 lh-0" %> 
+                        </div>
+                      </div>
+                    </div><!-- card-header -->
+                    <div class="card-body pd-20">
+                      <ul class="activity tx-13">
+                      <% @document_states.each do |d| %>
+                        <li class="activity-item">
+                          <div class="<%= d.document_state.format %>">
+                            <i class="<%= d.document_state.icon %>"></i>
+                          </div>
+                          <div class="activity-body">
+                          <p class="mg-b-2"><strong><%= d.user.name %></strong> <%= d.name %></p>
+                          <small class="tx-color-03"><%= d.description %> el <%= d.date.strftime("%m/%d/%Y a las %I:%M%p") %></small>
+                          </div><!-- activity-body -->
+                        </li><!-- activity-item -->
+                      <% end %>
+                      </ul><!-- activity -->
+                    </div><!-- card-body -->
+                  </div><!-- card -->
+          </div>
         </div><!-- row -->
       </div><!-- container -->
     </div><!-- content -->

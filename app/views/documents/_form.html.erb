@@ -11,8 +11,8 @@
     <% end %>
     <div class="form-row">
     <div class="form-group col-md-6">
-        <%= f.label :code, "Codigo" %>
-        <%= f.text_field :code, class: "form-control" %>
+        <%= f.label :document_type_id, "Tipo" %>
+        <%= f.select :document_type_id, DocumentType.all.collect {|d| [d.name, d.id]}, { :include_blank => "Seleccione" }, { :class => "form-control" } %>
     </div>
     <div class="form-group col-md-6">
         <%= f.label :doc_code, "Nro. Documento" %>
@@ -41,12 +41,18 @@
     </div>
     <div class="form-row">
     <div class="form-group col-md-6">
+        <%= f.label :description, "Glosa" %>
+        <%= f.text_field :description, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-6">
         <%= f.label :total_amount, "Monto Total" %>
         <%= f.number_field :total_amount, step: :any, class: "form-control" %>
     </div>
-    <div class="form-group col-md-6">
-        <%= f.label :state, "Estado" %>
-        <%= f.text_field :state, class: "form-control" %>
+    </div>
+    <div class="form-row">
+    <div class="form-group col-md-12">
+        <%= f.label :obs, "Observaciones" %>
+        <%= f.text_area :obs, class: "form-control" %>
     </div>
     </div>
     <div class="form-group">
